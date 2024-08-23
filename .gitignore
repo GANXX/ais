@@ -5,6 +5,7 @@ __pycache__/
 
 **/nohup.out
 **/labels
+data/
 
 # 过滤所有的图片格式
 **/*.png
