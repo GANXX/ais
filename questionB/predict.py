@@ -30,7 +30,9 @@ config = LoraConfig(
 
 # 读取测试数据集
 # DATA_PATH = "%s/%s_"%(evaldata_dir, DATA_SET1) #无需修改
-test_data = load_dataset("json", data_files="%s/pre_data/%s/%s_dev.json"%(cur_dir, DATA_SET, DATA_SET)) # 
+# 从指定路径加载JSON格式的数据集，这里使用的是QQP_dev.json文件
+# 注意：test文件通常没有标签，因此无法用来评判模型的精度，所以我们一般使用dev.json文件来进行评估
+test_data = load_dataset("json", data_files="/home/ganxin/fa/ais/workspace/questionB/pre_data/QQP/QQP_dev.json")
 # test文件基本没有标签无法评判模型精度，所以一般使用dev.json
 
 # 开始测试
@@ -38,7 +40,12 @@ total_number = len(test_data['train'])
 right_number = 0
 device = "cuda:0"
 
-f_out = open("%s/result_%s.txt"%(cur_dir,DATA_SET), 'w', encoding='utf-8')
+# 打开一个文件用于写入结果，文件名包含当前目录和数据集名称
+# %s 是字符串格式化的占位符，用于插入变量值
+# cur_dir 是当前目录的变量，DATA_SET 是数据集名称的变量
+# 'w' 表示以写入模式打开文件，如果文件不存在则创建，如果存在则清空内容
+# encoding='utf-8' 指定文件的编码格式为 UTF-8
+f_out = open("%s/result_%s.txt" % (cur_dir, DATA_SET), 'w', encoding='utf-8')
 
 for i in range(0, total_number):
     messages = [
@@ -62,3 +69,4 @@ for i in range(0, total_number):
     else:
         f_out.write(response[0]+'\n')
     f_out.flush()
+

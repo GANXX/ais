@@ -1,5 +1,5 @@
 DATA_SET = "QQP"
-DATA_PATH = "/home/aiservice/workspace/data/questionBData/%s/%s_train.tsv"%(DATA_SET, DATA_SET)
+DATA_PATH = "/home/ganxin/fa/ais/workspace/data/questionBData/%s/%s_train.tsv"%(DATA_SET, DATA_SET)
 VAL_SET_SIZE = 0
 MODEL = "gemma"
 

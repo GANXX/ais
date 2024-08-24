@@ -1,9 +1,9 @@
 import pandas as pd
 import json
 
-DATA_PATH = "" # 填入考试环境的数据集路径
+DATA_PATH = "/home/ganxin/fa/ais/workspace/data/questionBData" # 填入考试环境的数据集路径
 
-pre_data_path = "/home/aiservice/workspace/questionB/pre_data"
+pre_data_path = "/home/ganxin/fa/ais/workspace/questionB/pre_data"
 
 def qqp_process():
     train_df = pd.read_csv('%s/QQP/QQP_train.tsv'%(DATA_PATH), sep='\t', on_bad_lines="skip", header=0)
@@ -19,7 +19,7 @@ def qqp_process():
                     print(1)
                     continue
                 tmp = {}
-                tmp['instruction'] = "" # 构造合适的 instruction 
+                tmp['instruction'] = "Are the following two questions duplicate? If they are duplicate, output 1. If they are not duplicate, output 0." # 构造合适的 instruction input output
                 tmp['input'] = row['question1'] + ' ' + row['question2']
                 tmp['output'] = str(row['is_duplicate'])
                 train_res.append(tmp)
@@ -33,7 +33,7 @@ def qqp_process():
                     continue
                 # 构造每一项
                 tmp = {}
-                tmp['instruction'] = "" # 构造合适的 instruction 
+                tmp['instruction'] = "Are the following two questions duplicate? If they are duplicate, output 1. If they are not duplicate, output 0." # 构造合适的 instruction input output
                 tmp['input'] = row['question1'] + ' ' + row['question2']
                 dev_res.append(tmp)
 
@@ -61,7 +61,7 @@ def cola_process():
                     print(1)
                     continue
                 tmp = {}
-                tmp['instruction'] = "" # 构造合适的 instruction 
+                tmp['instruction'] = "Is the grammar of the following sentence correct ? If it is correct , output 1 . If it is not correct , output 0 ." # 构造合适的 instruction input output
                 # tmp['instruction'] = ''
                 tmp['input'] = row[3]
                 tmp['output'] = str(row[1])
@@ -76,7 +76,7 @@ def cola_process():
                     continue
                 # 构造每一项
                 tmp = {}
-                tmp['instruction'] = "" # 构造合适的 instruction 
+                tmp['instruction'] = "Is the grammar of the following sentence correct ? If it is correct , output 1 . If it is not correct , output 0 ." # 构造合适的 instruction input output
                 # tmp['instruction'] = ''
                 tmp['input'] = row[2]
                 dev_res.append(tmp)

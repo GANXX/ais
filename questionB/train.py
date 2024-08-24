@@ -13,10 +13,10 @@ from utils import generate_prompt, data_collator, save_pretrained, print_trainab
 
 import os
 pwd = os.getcwd()
-cur_dir=os.path.dirname(os.path.realpath(__file__))
+
 bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16)
 # 加载预训练模型
-base_model = AutoModelForCausalLM.from_pretrained('%s/data/model/%s'%(cur_dir, MODEL_PATH), quantization_config=bnb_config, device_map="auto",torch_dtype=torch.bfloat16)
+base_model = AutoModelForCausalLM.from_pretrained('/home/ganxin/fa/ais/workspace/data/questionBData/model/%s'%(MODEL_PATH), quantization_config=bnb_config, device_map="auto",torch_dtype=torch.bfloat16)
     
 print(print_trainable_parameters(base_model))
 
@@ -39,7 +39,7 @@ print(print_trainable_parameters(model))
 
 #需要调整的训练参数
 args = TrainingArguments(
-    output_dir="%s/output/%s/%s"%(cur_dir, MODEL, DATA_SET),
+    output_dir="/home/ganxin/fa/ais/workspace/questionB/output/%s/%s"%(MODEL, DATA_SET),
     per_device_train_batch_size=16,
     gradient_accumulation_steps=4,
     logging_steps=10,
@@ -75,7 +75,7 @@ model.config.use_cache = False
 
 trainer.train()
 
-lora_path='%s/saved_model/%s'%(cur_dir, DATA_SET) # 修改成工作路径
+lora_path='/home/ganxin/fa/ais/workspace/questionB/saved_model/%s'%(DATA_SET)
 
 model.config.use_cache = True
 trainer.model.save_pretrained(lora_path)

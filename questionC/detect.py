@@ -7,19 +7,19 @@ import cv2
 from ultralytics import YOLO
 
 # 加载 YOLOv8 模型
-model = YOLO("/home/aiservice/workspace/questionC/yoloTrain/runs/detect/train3/weights/last.pt")  # build from YAML and transfer weights
+model = YOLO("/home/ganxin/fa/ais/workspace/questionC/yoloTrain/runs/detect/train3/weights/last.pt")  # build from YAML and transfer weights
 
 
 # 读取图像
-img_dir = r"/home/aiservice/workspace/test/images"
-out_img_dir = r"/home/aiservice/workspace/test/out_img"
+img_dir = r"/home/ganxin/fa/ais/workspace/test/images"
+out_img_dir = r"/home/ganxin/fa/ais/workspace/test/out_img"
 
 for root, dirs, files in os.walk(img_dir):
     for f in files:
         input_path = os.path.join(root, f)
         out_path = os.path.join(out_img_dir, f)
 
-        # img_path = '/home/aiservice/workspace/questionC/yoloTrain/dataset/images/val/HT_VAL_000095_SH_210.jpg'
+        # img_path = '/home/ganxin/fa/ais/workspace/questionC/yoloTrain/dataset/images/val/HT_VAL_000095_SH_210.jpg'
         img = cv2.imread(input_path)
 
 

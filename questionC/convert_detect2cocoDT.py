@@ -3,7 +3,7 @@ import cv2
 from ultralytics import YOLO
 import os
 
-with open(r"/home/aiservice/workspace/questionC/ImgInfo_test.json", "r") as rf:
+with open(r"/home/ganxin/fa/ais/workspace/questionC/ImgInfo_test.json", "r") as rf:
     dataset = json.load(rf)
 
 image_dir = r"yoloTrain/dataset/images/val0"
@@ -12,7 +12,7 @@ image_dir = r"yoloTrain/dataset/images/val0"
 nms_threshold = 0.3
 confidence_threshold = 0.4
 
-model = YOLO(r"/home/aiservice/workspace/questionC/yoloTrain/runs/detect/train3/weights/last.pt")
+model = YOLO(r"/home/ganxin/fa/ais/workspace/questionC/yoloTrain/runs/detect/train3/weights/last.pt")
 
 cocoDT = []
 for imgInfo in dataset["images"]:

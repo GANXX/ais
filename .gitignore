@@ -10,6 +10,9 @@ data/
 #过滤questionB的结果输出
 **/questionB/output/
 **/questionB/saved_model/
+**/questionB/result_*.txt
+## questionB的预处理数据
+**/questionB/pre_data/
 
 
 # 过滤所有的图片格式

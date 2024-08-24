@@ -16,7 +16,7 @@ from modelscope import AutoModelForCausalLM, AutoTokenizer
 
 model_path = "Lucachen/gemma2b"
 
-tokenizer = AutoTokenizer.from_pretrained('/home/aiservice/workspace/data/questionBData/model/%s'%(model_path), use_fast=False, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('/home/ganxin/fa/ais/workspace/data/questionBData/model/%s'%(model_path), use_fast=False, trust_remote_code=True)
 
 def generate_prompt(data_point, is_logger=False):
     """   指令微调:
