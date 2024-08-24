@@ -7,6 +7,11 @@ __pycache__/
 **/labels
 data/
 
+#过滤questionB的结果输出
+**/questionB/output/
+**/questionB/saved_model/
+
+
 # 过滤所有的图片格式
 **/*.png
 **/*.jpg
