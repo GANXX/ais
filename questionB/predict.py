@@ -49,7 +49,7 @@ f_out = open("%s/result_%s.txt" % (cur_dir, DATA_SET), 'w', encoding='utf-8')
 
 for i in range(0, total_number):
     messages = [
-        {"role": "user", "content": test_data['train'][i]['instruction']+ " " + test_data['train'][i]['input']} # role不需要调整 
+        {"role": "user", "content": "instruction: "+ test_data['train'][i]['instruction']+ "context: " + test_data['train'][i]['input']} # role不需要调整 
     ]
     text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
@@ -63,10 +63,11 @@ for i in range(0, total_number):
         output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
     ]
     response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-    # print(response)
+    print(f"test number{i+1}:  {response}")
+    print("----------------------------------------------------\n\n")
     if i == total_number-1:
-        f_out.write(response[0])
+        f_out.write(response)
     else:
-        f_out.write(response[0]+'\n')
+        f_out.write(response+'\n')
     f_out.flush()
 

@@ -43,10 +43,11 @@ args = TrainingArguments(
     per_device_train_batch_size=16,
     gradient_accumulation_steps=4,
     logging_steps=10,
-    num_train_epochs=3, 
-    save_steps=100,
-    learning_rate=8e-5, # 1e-3 ~ 5e-5
+    num_train_epochs=50, 
+    save_steps=500,
+    learning_rate=1e-3, # 1e-3 ~ 5e-5
     save_on_each_node=True,
+    # dataloader_num_workers=20,
     gradient_checkpointing=True
 )
 

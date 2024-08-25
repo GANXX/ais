@@ -19,8 +19,9 @@ def qqp_process():
                     print(1)
                     continue
                 tmp = {}
-                tmp['instruction'] = "Are the following two questions duplicate? If they are duplicate, output 1. If they are not duplicate, output 0." # 构造合适的 instruction input output
-                tmp['input'] = row['question1'] + ' ' + row['question2']
+                tmp['instruction'] = "Determine if the following two questions are the same in meaning. If they are identical in meaning, respond with '1'. If they are different in meaning, respond with '0'. Please only respond with '0' or '1'." 
+                # 构造合适的 instruction input output
+                tmp['input'] = "the first question: " +row['question1'] + ' ' + "the second question:"+ row['question2']
                 tmp['output'] = str(row['is_duplicate'])
                 train_res.append(tmp)
 
@@ -33,8 +34,8 @@ def qqp_process():
                     continue
                 # 构造每一项
                 tmp = {}
-                tmp['instruction'] = "Are the following two questions duplicate? If they are duplicate, output 1. If they are not duplicate, output 0." # 构造合适的 instruction input output
-                tmp['input'] = row['question1'] + ' ' + row['question2']
+                tmp['instruction'] = "Determine if the following two questions are the same in meaning. If they are identical in meaning, respond with '1'. If they are different in meaning, respond with '0'. Please only respond with '0' or '1'." 
+                tmp['input'] = "The first question: " +row['question1'] + ' ' + "The second question:"+ row['question2']
                 dev_res.append(tmp)
 
     json_str = json.dumps(train_res, indent=2, ensure_ascii=False)   
